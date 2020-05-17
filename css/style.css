@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;900&family=Roboto:wght@400;700&display=swap');
+/* font-family: 'Alfa Slab One', cursive;
+
+font-family: 'Roboto', sans-serif;
+
+font-family: 'Roboto Slab', serif; */
+
+/* https://colorhunt.co/palette/12081 */
+
+body{
+    background-color: #ffc8c8;
+    color: #3e4149;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+/* header */
+
+h1{
+    font-family: 'Alfa Slab One', cursive;
+
+}
+header p{
+    font-family: 'Roboto Slab', serif;
+    color: black;
+}
+header{
+    background-color: #ff9999;
+    
+}
+header a{
+    display: inline-block;
+    background-color: #3e4149;
+    text-decoration: none;
+    color:#ff9999 ;
+    padding: 5px;
+}
+
+
+/* main */
+
+
+
+/* footer */
+footer div{
+    background-color: #3e4149;
+    color: #ffc8c8;
+    margin-bottom: 0;
+    height: 50px;
+}
