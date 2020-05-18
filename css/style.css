@@ -39,6 +39,15 @@ header a{
 
 /* main */
 
+ table, th, td, tr {
+    border: 1px solid black;
+  } 
+  td{
+      text-align: center;
+  }
+  #headerEmptyCell{
+      border: none;
+  }
 
 
 /* footer */

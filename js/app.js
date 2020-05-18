@@ -1,51 +1,84 @@
 'use strict'
-
-
-var seattle = { location: 'Seattle', minPerCust: 23, maxPerCust: 65, avgCookiePerSale: 6.6, salesArray: [], totalSales: 0 };
-var tokyo = { location: 'Tokyo', minPerCust: 3, maxPerCust: 24, avgCookiePerSale: 1.2, salesArray: [], totalSales: 0 };
-var dubai = { location: 'Dubai', minPerCust: 11, maxPerCust: 38, avgCookiePerSale: 3.7, salesArray: [], totalSales: 0 };
-var paris = { location: 'Paris', minPerCust: 20, maxPerCust: 38, avgCookiePerSale: 2.3, salesArray: [], totalSales: 0 };
-var lima = { location: 'Lima', minPerCust: 2, maxPerCust: 16, avgCookiePerSale: 4.6, salesArray: [], totalSales: 0 };
-
-var locations = [seattle, tokyo, dubai, paris, lima];
+var locations = [];
+var tableHeader = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total']
+function Location(location, minPerCust, maxPerCust, avgCookiePerSale, salesArray, totalSales) {
+    this.location = location;
+    this.minPerCust = minPerCust;
+    this.maxPerCust = maxPerCust;
+    this.avgCookiePerSale = avgCookiePerSale;
+    this.salesArray = salesArray;
+    this.totalSales = totalSales;
+    locations.push(this);
+}
+var seattle = new Location('Seattle', 23, 65, 6.3, [], 0);
+var tokyo = new Location('Tokyo', 3, 24, 1.2, [], 0);
+var dubai = new Location('Dubai', 11, 38, 3.7, [], 0);
+var paris = new Location('Paris', 20, 38, 2.3, [], 0);
+var lima = new Location('Lima', 2, 16, 4.6, [], 0);
 
 // Functions Calling
 cookieSales(locations);
-render(locations);
-// DOM Manipulation 
-function render(locationArray) {
-    var container = document.getElementById('salesList');
-
-    for (let i = 0; i < locationArray.length; i++) {
-        var liE = document.createElement('li');
-        liE.setAttribute('id', 'location'+i);
-        container.appendChild(liE);
-        liE.textContent = locationArray[i].location;
-        var liId = document.getElementById('location' + i )
-        console.log(liId)
-        var time = 6;
-        for (let index = 0; index < 14; index++) {
-            var ddE = document.createElement('dd');
-            console.log(ddE);
-            liId.appendChild(ddE);
-
-            if (index < 6) {
-                ddE.textContent = `${time}am: ${locationArray[i].salesArray[index]} cookies`;
-                time++;
-
-            } else if (index == 6) {
-                ddE.textContent = `12pm: ${locationArray[i].salesArray[index]} cookies`;
-                time = 1;
-
-            } else {
-                ddE.textContent = `${time}pm: ${locationArray[i].salesArray[index]} cookies`;
-                time++;
-            }
-        }
-        ddE.textContent = `Total: ${locationArray[i].totalSales} cookies`;
-
+console.log(seattle.salesArray);
+render(locations, tableHeader);
+// DOM Manipulation
+function render(locationArray, tableHeader) {
+   // the following code to create headers
+    var container = document.getElementById('salesTable');
+    var trE = document.createElement('tr');
+    var thE = document.createElement('th');
+    thE.setAttribute('id', 'headerEmptyCell');
+    trE.appendChild(thE); // to create an empty cell in the left top corner
+    container.appendChild(trE);
+    for (let index = 0; index < tableHeader.length; index++) { // this loop to create header cells with content   
+        var thE = document.createElement('th');
+        trE.appendChild(thE);
+        thE.textContent = tableHeader[index];
     }
 
+    var totalPerHour = []; // variable to store last row data
+    var totalPerDay = 0; // variable to store data for the right bottom cell
+
+    // this loop for rows 2 to 6
+    for (let i = 0; i < locationArray.length; i++) {
+        var trE = document.createElement('tr');
+        trE.setAttribute('id', 'location' + i);
+        container.appendChild(trE);
+
+        var trId = document.getElementById('location' + i)
+        var tdE = document.createElement('td');
+        trId.appendChild(tdE);
+        tdE.textContent = locationArray[i].location;
+
+        for (let index = 0; index < tableHeader.length; index++) {
+
+            var tdE = document.createElement('td');
+            trId.appendChild(tdE);
+            tdE.textContent = locationArray[i].salesArray[index];
+
+            totalPerHour.push(0);
+            totalPerHour[index] += locationArray[i].salesArray[index];
+        }
+        tdE.textContent = locationArray[i].totalSales;
+        totalPerDay += locationArray[i].totalSales;
+    }
+
+    // the following code to create the last row
+    var trE = document.createElement('tr');
+    container.appendChild(trE);
+    var tdE = document.createElement('td');
+    tdE.textContent = 'Totals';
+    trE.appendChild(tdE); // to create an empty cell in the left bottom corner
+    for (let index = 0; index < tableHeader.length; index++) {
+        if (index == (tableHeader.length - 1)) {
+            var tdE = document.createElement('td');
+            trE.appendChild(tdE);
+            tdE.textContent = totalPerDay;
+            break;
+        }
+        var tdE = document.createElement('td');
+        trE.appendChild(tdE);
+        tdE.textContent = totalPerHour[index];
+    }
 
 
 }
