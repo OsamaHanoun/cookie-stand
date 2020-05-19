@@ -7,53 +7,183 @@ font-family: 'Roboto Slab', serif; */
 
 /* https://colorhunt.co/palette/12081 */
 
-body{
+body {
     background-color: #ffc8c8;
     color: #3e4149;
     font-family: 'Roboto', sans-serif;
-
 }
 
-/* header */
+/* ------------Header------------- */
 
-h1{
+header h1 {
     font-family: 'Alfa Slab One', cursive;
-
+    margin: 0;
+    font-size: xx-large;
 }
-header p{
+
+header p {
     font-family: 'Roboto Slab', serif;
     color: black;
+    margin-top: 0;
+    margin-left: 10px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: large;
 }
-header{
+
+header {
     background-color: #ff9999;
-    
+    position: sticky;
+    top: 0;
+    border-bottom: 3px solid #3e4149;
 }
-header a{
+
+header a {
     display: inline-block;
     background-color: #3e4149;
     text-decoration: none;
-    color:#ff9999 ;
+    color: #ff9999;
     padding: 5px;
+    float: right;
+    position: relative;
+    top: 64px;
 }
 
+header nav {
+    margin: 0;
+    padding: 10px 120px;
+}
 
-/* main */
+header img {
+    width: 250px;
+    /* margin-top: ; */
+}
 
- table, th, td, tr {
+header div {
+    display: inline-block;
+}
+
+#button-div {
+    float: right;
+}
+
+#title-div {
+    margin-left: 200px;
+    margin-right: 300px;
+    text-align: center;
+}
+
+/* ------------Main------------- */
+
+/* sales */
+
+table, th, td, tr {
     border: 1px solid black;
-  } 
-  td{
-      text-align: center;
-  }
-  #headerEmptyCell{
-      border: none;
-  }
+    padding: 5px;
+    background-color:#3e4149 ;
+    color: #ff9999;
+}
+table{
+    border-collapse: collapse;
+    margin: auto;
+}
 
+td {
+    text-align: center;
+}
 
-/* footer */
-footer div{
+#headerEmptyCell {
+    border: none;
+}
+#sales-section{
+    padding: 75px 120px;
+    text-align: center;
+    height: 400px;
+
+}
+#sales-section h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: x-large;
+}
+
+/* home */
+
+#intro-section {
+    height: 500px;
+    text-align: center;
+    padding: 75px 120px;
+}
+#samples img {
+    width: 33%;
+    height: 300px;
+    border-radius: 30%;
+    border: 3px #3e4149 solid;
+}
+
+#bio p {
+    width: 80%;
+    font-size: large;
+    line-height: 25px;
+    text-align: justify;
+    display: inline-block;
+    /* background-color: white; */
+    padding: 10px;
+    border: 10px groove #3e4149;
+}
+
+#location-section {
+    height: 340px;
+    background-color: #444f5a;
+    margin: 0;
+    padding: 75px 120px;
+    color: #ff9999;
+    font-size: x-large;
+    text-align: center;
+}
+
+#location-section div {
+    display: inline-block;
+}
+
+#locations-div {
+    font-family: 'Roboto Slab', serif;
+    margin-right: 200px;
+    text-align: left;
+}
+
+#imgMap-div img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#contactInfo-section {
+    font-size: x-large;
+    padding: 75px 120px;
+    text-align: center;
+}
+
+#contactInfo-section img {
+    width: 100px;
+}
+
+#contactInfo-section ul {
+    list-style: none;
+}
+
+#contactInfo-section li {
+    font-family: 'Roboto Slab', serif;
+    display: inline-block;
+    margin-right: 80px;
+    margin-top: 50px;
+}
+
+/* ------------Footer------------- */
+
+footer div {
     background-color: #3e4149;
     color: #ffc8c8;
     margin-bottom: 0;
     height: 50px;
+    text-align: center;
+    padding: 10px;
 }

@@ -86,7 +86,6 @@ function render(locationArray, tableHeader) {
 // Functions
 function cookieSales(locationArray) {
     for (let i = 0; i < locationArray.length; i++) {
-        ;
         var min = locationArray[i].minPerCust;
         var max = locationArray[i].maxPerCust;
         var avg = locationArray[i].avgCookiePerSale;
