@@ -17,7 +17,7 @@ Location.prototype.cookieSales = function () {
     this.salesArray = [];
 
     for (let index = 0; index < tableHeader.length - 1; index++) {
-        var numOfSales = Math.floor((Math.floor(Math.random() * (this.maxPerCust - this.minPerCust + 1)) + this.minPerCust) * this.avgCookiePerSale);
+        var numOfSales = Math.round((Math.floor(Math.random() * (this.maxPerCust - this.minPerCust + 1)) + this.minPerCust) * this.avgCookiePerSale);
         this.totalSales += numOfSales;
         this.salesArray.push(numOfSales);
     }
@@ -116,9 +116,9 @@ formE.addEventListener('submit', function (event) {
     event.preventDefault();
 
     var shopName = event.target.shopName.value;
-    var minHourlyCust = event.target.minHourlyCust.value;
-    var maxHourlyCust = event.target.maxHourlyCust.value;
-    var avgCookie = event.target.avgCookie.value;
+    var minHourlyCust = Number(event.target.minHourlyCust.value);
+    var maxHourlyCust = Number(event.target.maxHourlyCust.value);
+    var avgCookie = Number(event.target.avgCookie.value);
     if (minHourlyCust > maxHourlyCust){
         let temp = minHourlyCust;
         minHourlyCust = maxHourlyCust;
